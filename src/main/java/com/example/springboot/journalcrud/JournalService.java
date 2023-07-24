@@ -25,4 +25,11 @@ public class JournalService {
                 .build();
     }
 
+
+    public Journal getJournalById(Integer id){
+
+        return journalRepository.findById(id).orElseThrow();
+
+    }
+
 }
