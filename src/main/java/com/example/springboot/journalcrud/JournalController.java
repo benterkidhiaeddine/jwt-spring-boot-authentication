@@ -2,6 +2,7 @@ package com.example.springboot.journalcrud;
 
 
 import com.example.springboot.journal.Journal;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +15,15 @@ public class JournalController {
 
     private final JournalService journalService;
     @PostMapping("/journals")
-    public ResponseEntity<MessageResponse> postJournal(@RequestBody JournalRequest request){
+    public ResponseEntity<MessageResponse> postJournal(@Valid  @RequestBody JournalRequest request){
         return ResponseEntity.ok(journalService.addJournal(request));
     }
 
     @GetMapping("/journals/{JournalId}")
     public ResponseEntity<Journal> getJournal(@PathVariable("JournalId") Integer id){
 
-        var jounral = journalService.getJournalById(id);
-        return ResponseEntity.ok(jounral);
+        var journal = journalService.getJournalById(id);
+        return ResponseEntity.ok(journal);
     }
 
 
