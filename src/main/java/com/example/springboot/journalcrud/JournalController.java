@@ -26,7 +26,10 @@ public class JournalController {
         return ResponseEntity.ok(journal);
     }
 
-
+    @PutMapping("/journals/{journalId}")
+    public ResponseEntity<MessageResponse> modifyJournal (@PathVariable("journalId") Integer id , @Valid @RequestBody JournalRequest request){
+        return ResponseEntity.ok(journalService.modifyJournal(request,id));
+    }
 
 
 

@@ -31,4 +31,14 @@ public class JournalService {
 
     }
 
+    public MessageResponse modifyJournal(JournalRequest request,Integer id ){
+        var journal = getJournalById(id);
+        journal.setDescription(request.getDescription());
+        journalRepository.save(journal);
+
+        return MessageResponse.builder()
+                .message("Journal modified successfully")
+                .build();
+    }
+
 }
